@@ -1,3 +1,0 @@
-openai
-streamlit==1.27.1
-watchdog
