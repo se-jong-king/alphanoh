@@ -1,8 +1,8 @@
 from typing import List
 from langchain.chains.qa_with_sources import load_qa_with_sources_chain
-from prompts import STUFF_PROMPT
+from alphanoh_0.prompts import STUFF_PROMPT
 from langchain.docstore.document import Document
-from embedding import FolderIndex
+from alphanoh_0.embedding import FolderIndex
 from pydantic.v1 import BaseModel
 from langchain.chat_models.base import BaseChatModel
 
