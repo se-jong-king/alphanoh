@@ -17,19 +17,19 @@ from ui import (
     display_file_read_error,
 )
 
-from caching import bootstrap_caching
+from alphanoh_0.caching import bootstrap_caching
 
-from parsing import read_file
-from chunking import chunk_file
-from embedding import embed_files
-from qa import query_folder
-from util import get_llm
+from alphanoh_0.parsing import read_file
+from alphanoh_0.chunking import chunk_file
+from alphanoh_0.embedding import embed_files
+from alphanoh_0.qa import query_folder
+from alphanoh_0.util import get_llm
 
 from utils.streamlit import append_history, undo, stream_display
 from utils.openai import Stream2Msgs
-import functions
+import alphanoh_0.functions
 
-from sidebar import sidebar
+from alphanoh_0.sidebar import sidebar
 
 EMBEDDING = "openai"
 VECTOR_STORE = "faiss"
