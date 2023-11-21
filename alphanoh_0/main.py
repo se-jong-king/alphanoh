@@ -1,5 +1,5 @@
-# Model_1°ú Model_2¸¦ Á¶ÇÕÇÒ ¿¹Á¤ÀÎ ¸ğµ¨
-# ÆÄÀÏÀ» ¾÷·ÎµåÇØ¼­ Ãªº¿À¸·Î ÆÄÀÏ¿¡ °üÇÑ Áú¹®À» ÇÒ ¼ö ÀÖ´Â ¸ğµ¨ ±¸Çö ¿¹Á¤
+# Model_1ê³¼ Model_2ë¥¼ ì¡°í•©í•  ì˜ˆì •ì¸ ëª¨ë¸
+# íŒŒì¼ì„ ì—…ë¡œë“œí•´ì„œ ì±—ë´‡ìœ¼ë¡œ íŒŒì¼ì— ê´€í•œ ì§ˆë¬¸ì„ í•  ìˆ˜ ìˆëŠ” ëª¨ë¸ êµ¬í˜„ ì˜ˆì •
 
 
 # -*- coding: utf-8 -*-
@@ -8,15 +8,15 @@ import io
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
-#Streamlit ¼³Á¤
+#Streamlit ì„¤ì •
 import streamlit as st
 import openai
 import os
 from utils.streamlit import append_history, undo, stream_display
 from utils.openai import Stream2Msgs
-import functions
+import alphanoh_0.functions
 
-from alphanoh.ui import (
+from alphanoh_0..ui import (
     wrap_doc_in_html,
     is_query_valid,
     is_file_valid,
@@ -24,13 +24,13 @@ from alphanoh.ui import (
     display_file_read_error,
 )
 
-from caching import bootstrap_caching
+from alphanoh_0.caching import bootstrap_caching
 
-from parsing import read_file
+from alphanoh_0.parsing import read_file
 
-from parsing import read_file
-from chunking import chunk_file
-from embedding import embed_files
+from alphanoh_0.parsing import read_file
+from alphanoh_0.chunking import chunk_file
+from alphanoh_0.embedding import embed_files
 
 # Enable caching for expensive functions
 bootstrap_caching()
@@ -46,31 +46,31 @@ if "messages" not in st.session_state:
 # Sidebar for parameters
 with st.sidebar:
     st.markdown("# AlphaNoh")
-    st.subheader("»ç¿ë¹æ¹ı")
+    st.subheader("ì‚¬ìš©ë°©ë²•")
     st.markdown(
-    "1. [OpenAI API key]¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n"  # noqa: E501
-    "2. pdf, docx, or txt fileÀ» ¾÷·Îµå ÇÏ¼¼¿ä.\n"
-    "3. ¹®¼­¿¡ °üÇØ Áú¹®ÇÏ¼¼¿ä.\n"
-    "4. ¸Å°³º¯¼ö¸¦ Á¶ÀıÇÏ¸é¼­ Áú¹®ÇÏ¼¼¿ä.\n"
+    "1. [OpenAI API key]ë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n"  # noqa: E501
+    "2. pdf, docx, or txt fileì„ ì—…ë¡œë“œ í•˜ì„¸ìš”.\n"
+    "3. ë¬¸ì„œì— ê´€í•´ ì§ˆë¬¸í•˜ì„¸ìš”.\n"
+    "4. ë§¤ê°œë³€ìˆ˜ë¥¼ ì¡°ì ˆí•˜ë©´ì„œ ì§ˆë¬¸í•˜ì„¸ìš”.\n"
     )
     st.markdown("---")
     st.header("API Key")
     api_key_input = st.text_input(
-        "OpenAI API key¸¦ ÀÔ·ÂÇÏ¼¼¿ä.",
+        "OpenAI API keyë¥¼ ì…ë ¥í•˜ì„¸ìš”.",
         type="password",
         placeholder="Paste your OpenAI API key here (sk-...)",
-        help="´ç½ÅÀÇ API key¸¦ https://platform.openai.com/account/api-keys. ¿¡¼­ ¾òÀ» ¼ö ÀÖ½À´Ï´Ù.",  # noqa: E501
+        help="ë‹¹ì‹ ì˜ API keyë¥¼ https://platform.openai.com/account/api-keys. ì—ì„œ ì–»ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",  # noqa: E501
         value=os.environ.get("OPENAI_API_KEY", None)
         or st.session_state.get("OPENAI_API_KEY", ""),
         )
     st.markdown("---")
 
     #file upload
-    st.header("ÆÄÀÏ")
+    st.header("íŒŒì¼")
     uploaded_file = st.file_uploader(
-    "pdf, docx, or txt fileÀ» ¿©±â¿¡ ¾÷·Îµå ÇÏ¼¼¿ä.",
+    "pdf, docx, or txt fileì„ ì—¬ê¸°ì— ì—…ë¡œë“œ í•˜ì„¸ìš”.",
     type=["pdf", "docx", "txt"],
-    help="½ºÄµµÈ ¹®¼­´Â ¾ÆÁ÷ Áö¿øÀÌ µÇÁö ¾Ê½À´Ï´Ù.",
+    help="ìŠ¤ìº”ëœ ë¬¸ì„œëŠ” ì•„ì§ ì§€ì›ì´ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.",
     )
     st.markdown("---")
 
@@ -101,9 +101,9 @@ with st.sidebar:
       "stream": True,
   }
     st.markdown(
-        "¸Å°³º¯¼ö¿¡ ´ëÇØ "
-        "´õ ±Ã±İÇÏ¸é [OPENAI](https://platform.openai.com/docs/api-reference/introduction) "  # noqa: E501
-        "¿¡ ¹æ¹®ÇÏ¿© ÀÚ¼¼È÷ ¾Ë¾Æº¸¼¼¿ä.")
+        "ë§¤ê°œë³€ìˆ˜ì— ëŒ€í•´ "
+        "ë” ê¶ê¸ˆí•˜ë©´ [OPENAI](https://platform.openai.com/docs/api-reference/introduction) "  # noqa: E501
+        "ì— ë°©ë¬¸í•˜ì—¬ ìì„¸íˆ ì•Œì•„ë³´ì„¸ìš”.")
 
     # Functions
     st.subheader("Functions")
@@ -113,15 +113,15 @@ with st.sidebar:
     st.subheader("Advanced option")
     with st.expander("Options"):
      return_all_chunks = st.checkbox("Show all chunks retrieved from vector search")
-     show_full_doc = st.checkbox("¾÷·ÎµåÇÑ ¹®¼­ È®ÀÎÇÏ±â")
+     show_full_doc = st.checkbox("ì—…ë¡œë“œí•œ ë¬¸ì„œ í™•ì¸í•˜ê¸°")
 
 
     st.markdown("---")
     st.markdown("# ABOUT")
     st.markdown(
-        "[Energy+AI ÇÙ½ÉÀÎÀç¾ç¼º ±³À°¿¬±¸´Ü](https://eaierc.jnu.ac.kr/)"
-        "\n2023³âµµ µ¿°è ¸¶ÀÌÅ©·Î Ä¸½ºÅæ µğÀÚÀÎ °æÁø´ëÈ¸ "
-        "AlphaNohÆÀÀÇ °á°ú¹°ÀÔ´Ï´Ù.")
+        "[Energy+AI í•µì‹¬ì¸ì¬ì–‘ì„± êµìœ¡ì—°êµ¬ë‹¨](https://eaierc.jnu.ac.kr/)"
+        "\n2023ë…„ë„ ë™ê³„ ë§ˆì´í¬ë¡œ ìº¡ìŠ¤í†¤ ë””ìì¸ ê²½ì§„ëŒ€íšŒ "
+        "AlphaNohíŒ€ì˜ ê²°ê³¼ë¬¼ì…ë‹ˆë‹¤.")
     
     st.markdown("Made by [se-jong-king](https://github.com/se-jong-king)")
     st.markdown("---")
