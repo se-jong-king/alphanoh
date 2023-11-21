@@ -1,5 +1,5 @@
 from langchain.vectorstores import VectorStore
-from parsing import File
+from alphanoh_0.parsing import File
 from langchain.vectorstores.faiss import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.embeddings.base import Embeddings
