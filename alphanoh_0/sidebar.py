@@ -8,33 +8,33 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 import streamlit as st
 import os
 from utils.streamlit import undo
-import functions
+import alphanoh_0.functions
 
 def sidebar():
     # Sidebar for parameters
     with st.sidebar:
         st.markdown("# AlphaNoh")
-        st.subheader("»ç¿ë¹æ¹ı")
+        st.subheader("ì‚¬ìš©ë°©ë²•")
         st.markdown(
-        "1. [OpenAI API key]¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n"  # noqa: E501
-        "2. pdf, docx, or txt fileÀ» ¾÷·Îµå ÇÏ¼¼¿ä.\n"
-        "3. ¹®¼­¿¡ °üÇØ Áú¹®ÇÏ¼¼¿ä.\n\n"
-        "* Ãß°¡ ¿¹Á¤ ±â´É : "
-        "4. ¸Å°³º¯¼ö Á¶Àı\n"
+        "1. [OpenAI API key]ë¥¼ ì…ë ¥í•˜ì„¸ìš”.\n"  # noqa: E501
+        "2. pdf, docx, or txt fileì„ ì—…ë¡œë“œ í•˜ì„¸ìš”.\n"
+        "3. ë¬¸ì„œì— ê´€í•´ ì§ˆë¬¸í•˜ì„¸ìš”.\n\n"
+        "* ì¶”ê°€ ì˜ˆì • ê¸°ëŠ¥ : "
+        "4. ë§¤ê°œë³€ìˆ˜ ì¡°ì ˆ\n"
     )
         st.markdown("---")
         st.header("API Key")
         api_key_input = st.text_input(
-            "OpenAI API key¸¦ ÀÔ·ÂÇÏ¼¼¿ä.",
+            "OpenAI API keyë¥¼ ì…ë ¥í•˜ì„¸ìš”.",
             type="password",
             placeholder="Paste your OpenAI API key here (sk-...)",
-            help="´ç½ÅÀÇ API key¸¦ https://platform.openai.com/account/api-keys. ¿¡¼­ ¾òÀ» ¼ö ÀÖ½À´Ï´Ù.",  # noqa: E501
+            help="ë‹¹ì‹ ì˜ API keyë¥¼ https://platform.openai.com/account/api-keys. ì—ì„œ ì–»ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.",  # noqa: E501
             value=os.environ.get("OPENAI_API_KEY", None)
             or st.session_state.get("OPENAI_API_KEY", ""),
         )
         st.markdown("---")
 
-        st.header("Setting(Ãß°¡ Áß)")
+        st.header("Setting(ì¶”ê°€ ì¤‘)")
         # Role selection and Undo
         st.subheader("Chat")
         with st.expander("role"):
@@ -61,9 +61,9 @@ def sidebar():
             "stream": True,
         }
         st.markdown(
-            "¸Å°³º¯¼ö¿¡ ´ëÇØ "
-            "´õ ±Ã±İÇÏ¸é [OPENAI](https://platform.openai.com/docs/api-reference/introduction) "  # noqa: E501
-            "¿¡ ¹æ¹®ÇÏ¿© ÀÚ¼¼È÷ ¾Ë¾Æº¸¼¼¿ä.")
+            "ë§¤ê°œë³€ìˆ˜ì— ëŒ€í•´ "
+            "ë” ê¶ê¸ˆí•˜ë©´ [OPENAI](https://platform.openai.com/docs/api-reference/introduction) "  # noqa: E501
+            "ì— ë°©ë¬¸í•˜ì—¬ ìì„¸íˆ ì•Œì•„ë³´ì„¸ìš”.")
 
         # Functions
         st.subheader("Functions")
@@ -73,9 +73,9 @@ def sidebar():
         st.markdown("---")
         st.markdown("# ABOUT")
         st.markdown(
-            "[Energy+AI ÇÙ½ÉÀÎÀç¾ç¼º ±³À°¿¬±¸´Ü](https://eaierc.jnu.ac.kr/)"
-            "\n2023³âµµ µ¿°è ¸¶ÀÌÅ©·Î Ä¸½ºÅæ µğÀÚÀÎ °æÁø´ëÈ¸ "
-            "AlphaNohÆÀÀÇ °á°ú¹°ÀÔ´Ï´Ù.")
+            "[Energy+AI í•µì‹¬ì¸ì¬ì–‘ì„± êµìœ¡ì—°êµ¬ë‹¨](https://eaierc.jnu.ac.kr/)"
+            "\n2023ë…„ë„ ë™ê³„ ë§ˆì´í¬ë¡œ ìº¡ìŠ¤í†¤ ë””ìì¸ ê²½ì§„ëŒ€íšŒ "
+            "AlphaNohíŒ€ì˜ ê²°ê³¼ë¬¼ì…ë‹ˆë‹¤.")
     
         st.markdown("Made by [se-jong-king](https://github.com/se-jong-king)")
         st.markdown("---")
