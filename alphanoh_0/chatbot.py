@@ -9,7 +9,7 @@ import streamlit as st
 import openai
 import os
 
-from ui import (
+from alphanoh_0.ui import (
     wrap_doc_in_html,
     is_query_valid,
     is_file_valid,
