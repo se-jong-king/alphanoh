@@ -1,6 +1,6 @@
 from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from parsing import File
+from alphanoh_0.parsing import File
 
 
 def chunk_file(
