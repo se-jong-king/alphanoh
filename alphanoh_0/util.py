@@ -3,7 +3,7 @@ from langchain.chains.combine_documents.stuff import StuffDocumentsChain
 from langchain.docstore.document import Document
 
 from langchain.chat_models import ChatOpenAI
-from debug import FakeChatModel
+from alphanoh_0.debug import FakeChatModel
 from langchain.chat_models.base import BaseChatModel
 
 
